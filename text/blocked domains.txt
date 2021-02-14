@@ -1,0 +1,12 @@
+There are several reasons why facebook blocked certain sites.
+1 - Community Standards Violation - if the site includes content that has firearms, marijuana, non-medical drugs, etc. you can visit their comunity standards here: https://www.facebook.com/communitystandards
+2 - Facebook algorithms
+3 - Malicious Reporting
+
+But there are things that we can do to unblocked those domains.
+1 - Make sure the site does not violate any community standards
+2 - We can submit the domain to facebook for reconsideration, this video might help: https://www.youtube.com/watch?v=ObBYjmtzIQc
+3 - Use facebook Ads live chat (if available)
+
+facebook sharing debugger: https://developers.facebook.com/tools/debug/
+source: https://themeisle.com/blog/website-blocked-by-facebook/#:~:text=Why%20does%20Facebook%20block%20certain,lot%20of%20things%20on%20Facebook.&text=To%20protect%20people%20from%20situations,%2C%20groups%2C%20Messenger%2C%20etc.

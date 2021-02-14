@@ -1,0 +1,1 @@
+<p>[tm_button btn_design_style="btn-theme-colored1" button_size="" button_alignment="text-center" btn_round="true" btn_flat="true" btn_theme_colored="1" button_text="CLICK HERE TO MAKE A DONATION" link_url="url:https%3A%2F%2Fwww.artofgivingfoundation.org%2Fprograms%2F|title:Kids%20Create%20Art%20Submission|target:%20_blank|"]</p>

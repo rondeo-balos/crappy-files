@@ -1,0 +1,77 @@
+
+<script src="https://embed.typeform.com/embed.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/pouchdb@7.2.1/dist/pouchdb.min.js'></script>
+<div id='overlay'>
+  <div class='text'>
+  <h4>"Some lessons are still not accessible to all. If you are interested, kindly click the button below to sign up."</h4>
+    <a class="typeform-share button" href="https://form.typeform.com/to/nB6AlUJV" data-mode="popup" style="display:inline-block;text-decoration:none;background-color:#3A7685;color:white;cursor:pointer;font-family:Helvetica,Arial,sans-serif;font-size:20px;line-height:50px;text-align:center;margin:0;padding:20px;border-radius:25px;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:bold;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;" target="_blank">Click Here to Sign Up.</a> <script> (function() { var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id="typef_orm_share", b="https://embed.typeform.com/"; if(!gi.call(d,id)){ js=ce.call(d,"script"); js.id=id; js.src=b+"embed.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(js,q) } })() </script>
+  </div>
+</div>
+<style>
+#overlay .text{
+  position: absolute;
+  width: 300px;
+  text-align: center;
+  top: 45%;
+  left: 50%;
+  margin-left:-150px;
+  border-radius: 5px;
+  color: #fff !important;
+  background: #0075b2;
+  padding: 5px;
+  display: block;
+}
+  #overlay .text a{
+  	text-decoration: inherit !important;
+    font-weight: inherit !important;
+    color: #aaa !important;
+    width:100% !important;
+    background: #fff !important;
+    color: #0075b2 !important;
+    border-radius: 5px !important;
+    display: block !important;
+    margin-top: 10px !important;
+    padding: 10px !important;
+  }
+#overlay{
+  position: fixed;
+  display: none;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background: #000a;
+  z-index: 99;
+}
+</style>
+<script>
+var db = new PouchDB('users2');
+  setTimeout(function(){
+//var remoteCouch = false;
+db.get(localStorage.getItem('garlic:triplethreatsocial.com*>form>input.member[email]')).then(function(e){
+}).catch(function(err){
+  document.querySelector('#overlay').style.display = 'block';
+});
+window.addEventListener('message', function(event){
+      if(event.data.type === "form-submit")
+        db.put({
+        _id: localStorage.getItem('garlic:triplethreatsocial.com*>form>input.member[email]'),
+        title: 'subscribed'
+      }).then(function (response) {
+        document.querySelector('#overlay').style.display = 'none';
+      }).catch(function (err) {
+        console.log(err);
+      });
+    }, false);
+  },1000);
+  var isclicked = false;
+  document.querySelector('.text').onclick = function(){
+  	isclicked = true;
+  }
+  document.querySelector('#overlay').onclick = function(){
+  	if(!isclicked){
+  		document.querySelector('#overlay').style.display = 'none';
+  		isclicked = false;
+  	}
+  }
+</script>

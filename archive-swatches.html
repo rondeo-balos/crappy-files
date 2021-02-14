@@ -1,0 +1,138 @@
+<script type="text/javascript">
+(function($){
+	var colors = {
+		'Pale Pink':'#fadadd',
+		'White':'#fefefe',
+		'Solid White': '#fefefe',
+		'Arctic White': '#f4f3ef',
+		'Sun Yellow': '#fdd835',
+		'Jet Black': '#0A0A0A',
+		'Sky Blue': '#87ceeb',
+		'Heather Grey':'#bebbbb',
+		'Charcoal': '#36454F',
+		'White Heather': '#b7babc',
+		'Gold': '#e19b29',
+		'Athletic Heather': '#989898',
+		'Asphalt Heather': '#2c2c2c',
+		'Bright Royal': '#1d498a',
+		'Coal': '#373f41',
+		'Pink': '#ecc9cf',
+		'Ash': '#dcdcdc',
+		'Heather Mauve': '#966f6a',
+		'Brown': '#725954',
+		'Silver': '#c3c2be',
+		'Heather Olive': '#7b7461',
+		'Heather Ice Blue': '#c6d4d4',
+		'Aqua': '#4091ac',
+		'Turquoise':'#18a7c9',
+		'Light Blue': '#a2afb8',
+		'True Royal': '#48689b',
+		'Heather True Royal': '#426a9d',
+		'Asphalt': '#626365',
+		'Heather Navy': '#4c5363',
+		'Yellow': '#e1db7d',
+		'Tri-Blend Heather White': '#e6e6e6',
+		'Tri-Blend Vintage Royal': '#3566a9',
+		'Tri-Blend Vintage Navy': '#2c3844',
+		'Tri-Blend Premium Heather': '#a0a5ab',
+		'Charcoal Black TriBlend': '#3e3d3b',
+		'Aqua TriBlend': '#1c8aaf',
+		'Dark Grey Heather': '#3d3c41',
+		'Dark Grey': '#36353a',
+		'Black': '#000',
+		'Sport Grey': '#a5a5a3',
+		'Dark Heather': '#575b5c',
+		'Charcoal Black TriBlend': '#3b3a38',
+		'Navy': '#2d3245'
+	};
+$(function () {
+$('.variations.color,.variations.colors').each(function(index,element){
+	var selectElement = $(element).find('select');
+	var select = $(selectElement);
+	var random = "id_" + Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
+	select.attr('solid-id',random);
+    var container = $("<div class='radioSelectContainer' />");
+    select.parent().parent().before(container);
+    //container.append(select);
+
+    select.find('option').each(function (optionIndex, optionElement) {
+      if($(this).val()==='') return;
+      var radioGroup = select.attr('id') + "Group";
+      var label = $("<label />");
+      container.append(label);
+
+      $("<input type='radio' name='" + radioGroup + "' />")
+          .attr("value", $(this).val())
+          .attr('solid-id',random)
+          //.click((function () { select.val($(this).val()); })) //radio updates select - see optional below
+          .appendTo(label);
+
+      $("<span style='background-color:" + colors[$(this).val()] + "'></span>").appendTo(label);
+    });
+
+    //http://stackoverflow.com/questions/4957207/how-to-check-uncheck-radio-button-on-click
+    //optional - this logic handles unchecking when clicking on an already checked radio
+    container.find(":radio + span").mousedown(
+      function (e) {
+        var $span = $(this);
+        var $radio = $span.prev();
+        /*if ($radio.is(':checked')) {
+          var uncheck = function() {
+            setTimeout(function () { $radio.prop('checked', false); }, 0);
+          };
+          var unbind = function() {
+            $span.unbind('mouseup', up);
+          };
+          var up = function() {
+            uncheck();
+            unbind();
+          };
+          $span.bind('mouseup', up);
+          $span.one('mouseout', unbind);
+        } else {*/
+          //alert($radio.val());
+          select.val($radio.val());
+        /*}*/
+      }
+    );
+
+    select.change((function () { //select updates radio
+      $("input[solid-id='" + select.attr('solid-id') + "'][value='" + this.value + "']").prop("checked", true);
+    }));
+});
+
+  $('.variations.color > select').each(function (selectIndex, selectElement) {});
+});
+})(jQuery);
+</script>
+<style type="text/css">
+.radioSelectContainer > select {
+  display: none;
+}
+
+.radioSelectContainer > label {
+  display: inline-block;
+  margin: 0.3em 0.3em 0 0;
+  background-color: #EFEFEF;
+}
+
+  .radioSelectContainer > label > span {
+    padding: 8px;
+    text-align: center;
+    display: block;
+    white-space: nowrap;
+    border: solid 3px grey;
+    border-radius: 100%;
+  }
+
+  .radioSelectContainer > label > input {
+    position: absolute;
+    opacity: 0;
+  }
+
+    .radioSelectContainer > label > input:checked + span {
+      /* background-color: #404040;
+      color: #F7F7F7; */
+      border: solid 3px #323298;
+    }
+</style>

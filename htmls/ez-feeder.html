@@ -1,0 +1,8 @@
+<?php
+$feed = file_get_contents('https://script.google.com/macros/s/AKfycbwOAs1g69k4QBmwZzinGPQH_4PNuPrpr9DNhe_D0XBJXuIzVsAk/exec');
+
+$myfile = fopen("rss.xml", "w") or die("Unable to open file!");
+fwrite($myfile, "<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Referrals</title><link></link><description>5 star Service Providers</description>".$feed."</channel></rss>");
+fclose($myfile);
+
+?>
